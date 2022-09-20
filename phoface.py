@@ -13,7 +13,7 @@ known_face_names = [
 ]
 
 
-unknown_image = face_recognition.load_image_file("outlows.jpg")
+unknown_image = face_recognition.load_image_file("test3.jpg")
 #find all faces
 face_locations = face_recognition.face_locations(unknown_image)
 face_encodings = face_recognition.face_encodings(unknown_image, face_locations)

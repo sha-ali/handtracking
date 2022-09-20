@@ -2,7 +2,7 @@ import face_recognition
 import cv2
 import numpy as np
 
-video_captured = cv2.VideoCapture(0)
+video_captured = cv2.VideoCapture('http://log:log@192.168.200.89:8080/video')
 
 my_image = face_recognition.load_image_file("sha.jpg")
 face_encoding = face_recognition.face_encodings(my_image)[0]
@@ -17,7 +17,7 @@ kn_fname = [
 while True:
     ret,frame = video_captured.read()
 
-    rgb_frame = frame[:, :,  ::-1]
+    rgb_frame = frame[:, :, ::-1]
 
     face_loc = face_recognition.face_locations(rgb_frame)
     face_encoding = face_recognition.face_encodings(rgb_frame, face_loc)
@@ -32,11 +32,11 @@ while True:
         if matches[best_match]:
             name = kn_fname[best_match]
 
-        cv2.rectangle(frame, (left,top), (right, bottom), (0,0,255), 2)
+        cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
 
-        cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0,0,255), cv2.FILLED)
+        cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
         font = cv2.FONT_ITALIC
-        cv2.putText(frame, name, (left +6, bottom - 6), font, 1.0, (255, 255, 255), 1)
+        cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
 
     cv2.imshow('video', frame)
 
