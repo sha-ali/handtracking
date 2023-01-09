@@ -8,7 +8,7 @@ frameR = 100
 smothning = 5
 swcam, shcam = pyautogui.size()
 
-cap = cv2.VideoCapture('http://log:log@192.168.200.89:8080/video')
+cap = cv2.VideoCapture(0)
 cap.set(3, wcam)
 cap.set(4, hcam)
 
